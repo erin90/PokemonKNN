@@ -19,6 +19,40 @@ data_point_15 = { :label => "Pseudo-Legendary", :features => [90, 100, 70, 110, 
 data_point_16 = { :label => "Pseudo-Legendary", :features => [88, 120, 75, 100, 75, 142, 45]} #Dragapult
 ]
 
+test_data = []
+test_data2 = []
+test_data3 = []
+i = 0
+j = 0
+puts "This KNN Algorithm classifies based on 7 features: HP,ATTACK, DEFENSE, SPECIAL ATTACK, SPECIAL DEFENSE, SPEED, CAPTURE RATE"
+for x in i..j do
+    if i == 0
+        puts "Enter features of FIRST POKEMON"
+        for y in 0..6 do
+            puts "Enter Stat Here:"
+            stat = gets.chomp.to_i
+            test_data.push(stat)
+        end
+        i += 1
+    elsif i == 1
+        puts "Enter features of SECOND POKEMON"
+        for y in 0..6 do
+            puts "Enter Stat Here:"
+            stat = gets.chomp.to_i
+            test_data2.push(stat)
+        end
+        i += 1
+    else
+        puts "Enter features of THIRD POKEMON"
+        for y in 0..6 do
+            puts "Enter Stat Here:"
+            stat = gets.chomp.to_i
+            test_data3.push(stat)
+        end 
+    end
+end  
+
+
 def classify_with_knn(data, k, unknown_data_point)
     another = []
     k_array = []
@@ -53,19 +87,16 @@ def classify_with_knn(data, k, unknown_data_point)
   
     
     if legendary < pseudo
-         puts "Unknown data point is a PSEUDO-LEGENDARY pokemon with tally Legendary = #{legendary} and Pseudo-Legendary = #{pseudo}"
+         puts "Unknown stats might be from a PSEUDO-LEGENDARY pokemon with tally Legendary = #{legendary} and Pseudo-Legendary = #{pseudo}"
     elsif legendary <= pseudo then
-        puts "Unknown data point cannot be determined with tally Legendary = #{legendary} and Pseudo-Legendary = #{pseudo}"
+        puts "Unknown stats cannot be determined with tally Legendary = #{legendary} and Pseudo-Legendary = #{pseudo}"
     else
-        puts "Unknown data point is a LEGENDARY pokemon with tally Legendary = #{legendary} and Pseudo-Legendary = #{pseudo}"
+        puts "Unknown stats might be from a LEGENDARY pokemon with tally Legendary = #{legendary} and Pseudo-Legendary = #{pseudo}"
     end
 
 end
-    test_data = [75,110,125,100,105,85,45] #Pseudo-Legendary Stats
-    test_data2 = [110,160,110,80,110,100,6] #Legendary Stats
-    test_data3 = [125,130,90,130,90,95,8] #Legendary Stats
-    
-    puts classify_with_knn(dataset, 13, test_data)
+
+    puts classify_with_knn(dataset, 15, test_data)
     puts classify_with_knn(dataset, 7, test_data2)
     puts classify_with_knn(dataset, 5, test_data3)
     
